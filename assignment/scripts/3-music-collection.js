@@ -13,10 +13,10 @@ function addToCollection(title, artist, yearPublished){// Take in the album's ti
     title: title,
     artist: artist,
     year: yearPublished
-  }
+  };
   collection.push(album);// Add the new object to the end of the collection array
   return album;// Return the newly created object
-}
+} // end addToCollection
 
 // Test the addToCollection function:
 console.log('added: ', addToCollection('Led Zeppelin I', 'Led Zeppelin', 1969));
@@ -36,10 +36,11 @@ console.log(collection);
 function showCollection(array){// Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
   console.log(array.length);// Console.log the number of items in the array.
   for (let i of array){
-    console.log(i.title + ' by ' + i.artist + ', published in the year ' + i.yearPublished);
+    console.log(i.title + ' by ' + i.artist + ', published in the year ' + i.year);
   }// Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
-}
+} // end showCollection
 // Test the showCollection function.
+showCollection(collection);
 
 // Add a function named findByArtist. This function should:
 
