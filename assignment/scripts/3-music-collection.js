@@ -34,7 +34,8 @@ console.log(collection);
 
 // Add a function named showCollection. This function should:
 function showCollection(array){// Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
-  console.log(array.length);// Console.log the number of items in the array.
+  console.log('in showCollection', array);
+  console.log('Total Albums:', array.length);// Console.log the number of items in the array.
   for (let i of array){
     console.log(i.title + ' by ' + i.artist + ', published in the year ' + i.year);
   }// Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
@@ -43,12 +44,19 @@ function showCollection(array){// Take in an array parameter. (This allows it to
 showCollection(collection);
 
 // Add a function named findByArtist. This function should:
+function findByArtist(artist){// Take in artist (a string) parameter
+  console.log('in findByArtist', artist);
+  let found = [];// Create an array to hold any results, empty to start
+  for (let alb of collection){
+    if (alb.artist === artist){
+      found.push(alb);
+    }
+  }// Loop through the collection and add any objects with a matching artist to the array.
+  return found;// Return the array with the matching results. If no results are found, return an empty array.
+}// end findByArtist
 
-// Take in artist (a string) parameter
-// Create an array to hold any results, empty to start
-// Loop through the collection and add any objects with a matching artist to the array.
-// Return the array with the matching results. If no results are found, return an empty array.
 // Test the findByArtist function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
+console.log('testing findByArtist, searching Led Zeppelin', findByArtist('Led Zeppelin'));
 
 // When testing your functions, write all tests in the JavaScript file!
 
