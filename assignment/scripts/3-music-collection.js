@@ -47,9 +47,9 @@ showCollection(collection);
 function findByArtist(artist){// Take in artist (a string) parameter
   console.log('in findByArtist', artist);
   let found = [];// Create an array to hold any results, empty to start
-  for (let alb of collection){
-    if (alb.artist === artist){
-      found.push(alb);
+  for (let album of collection){
+    if (album.artist === artist){
+      found.push(album);
     }
   }// Loop through the collection and add any objects with a matching artist to the array.
   return found;// Return the array with the matching results. If no results are found, return an empty array.
@@ -63,12 +63,28 @@ console.log('testing findByArtist, searching Led Zeppelin', findByArtist('Led Ze
 // Stretch goals
 // Create a function called search. This function should:
 
-// Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
+function search(objectArtist, objectYear){// Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
 // { artist: 'Ray Charles', year: 1957 }
 // The returned output from search should meet these requirements:
-// Return a new array of all items in the collection matching all of the search criteria.
-// If no results are found, return an empty array.
-// If there is no search object or an empty search object provided as input, then return all albums in the collection.
+  if (arguments.length === 0){
+    return collection;
+  }
+  else if (arguments === undefined){
+    return collection;
+  }// If there is no search object or an empty search object provided as input, then return all albums in the collection.
+  let searchResults = [];// If no results are found, return an empty array.
+  for (let i of collection) {
+    if (i.artist == objectArtist && i.year == objectYear){
+      searchResults.push(i);
+    }
+  }
+  return searchResults;// Return a new array of all items in the collection matching all of the search criteria.
+}// end search
+let emptyObject;
+console.log('testing search, should see all albums in collection', search(emptyObject));
+console.log('testing search, should see all albums in collection', search());
+console.log('testing search, should see "Houses of the Holy"', search('Led Zeppelin', 1973));
+
 // Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
 
 // Update the addToCollection function to also take an input parameter for the array of tracks.
