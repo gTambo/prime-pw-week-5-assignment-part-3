@@ -7,19 +7,20 @@ While working through the features below, make sure to commit after you complete
 // Create a variable collection that starts as an empty array.
 let collection = [];
 // Add a function named addToCollection. This function should:
-function addToCollection(title, artist, yearPublished){// Take in the album's title, artist, yearPublished as input parameters
-  console.log('in addToCollection', title, artist, yearPublished);
+function addToCollection(title, artist, yearPublished, tracks){// Take in the album's title, artist, yearPublished as input parameters
+  console.log('in addToCollection', title, artist, yearPublished, tracks);
   const album = {// Create a new object having the above properties
     title: title,
     artist: artist,
-    year: yearPublished
+    year: yearPublished,
+    tracks: tracks
   };
   collection.push(album);// Add the new object to the end of the collection array
   return album;// Return the newly created object
 } // end addToCollection
 
 // Test the addToCollection function:
-console.log('added: ', addToCollection('Led Zeppelin I', 'Led Zeppelin', 1969));
+console.log('added: ', addToCollection('Led Zeppelin I', 'Led Zeppelin', 1969, ['Good Times Bad Times: 2:46', "Babe I'm gonna leave you: 6:43", "You Shook Me: 6:28", "Dazed and Confused: 6:29", "Your Time Is Gonna Come: 4:35", "Black Mountain Side: 2:13", "Communication Breakdown: 2:30", "I can't Quit You Baby: 4:43", "How Many More Times: 8:28"]));
 
 // Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
 // Console.log each album as added using the returned value.
@@ -29,6 +30,7 @@ console.log('added: ', addToCollection('Drunk', 'Thundercat', 2017));
 console.log('added: ', addToCollection('Katy Lied', 'Steely Dan', 1975));
 console.log('added: ', addToCollection('My First Car-EP', 'Vulfpeck', 2013));
 console.log('added: ', addToCollection('The Striped Album', 'Cory Wong', 2020));
+console.log('added: ', addToCollection('Trail Songs: Dusk', 'Cory Wong', 2020));
 // After all are added, console.log the collection array.
 console.log(collection);
 
