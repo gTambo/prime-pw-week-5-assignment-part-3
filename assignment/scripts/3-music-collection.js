@@ -72,22 +72,22 @@ function search(searchObject){// Take an input parameter for a search criteria o
 // { artist: 'Ray Charles', year: 1957 }
 // The returned output from search should meet these requirements:
   console.log('in search', typeof arguments);
-  if (arguments.length === 0){
+  if (arguments.length === 0 || searchObject[0] === undefined){
     return collection;
   } // If there is no search object or an empty search object provided as input, then return all albums in the collection.
   let searchResults = [];// If no results are found, return an empty array.
-  for (let index of collection) {
-    for (let t = 0; t < index.trackName.length; t++){
-      if (searchObject.trackName === index.trackName[t]) {
-        searchResults.push(index);
+  for (let index of collection) { // looping through collection array
+    for (let t = 0; t < index.trackName.length; t++){ // *STRETCH* looping each objects trackName array
+      if (searchObject.trackName === index.trackName[t]) { //assuming search input is in object format...
+        searchResults.push(index); //bump it to the end of results
       }
     }
-    if (index.artist === searchObject.artist && index.year === searchObject.year){
+    if (index.artist === searchObject.artist && index.year === searchObject.year){ // same as above, but looking for artist and year together
       searchResults.push(index);
     }
   }
 
-  return searchResults;// Return a new array of all items in the collection matching all of the search criteria.
+  return searchResults;// Returning new array of all items in the collection matching all of the search criteria.
 }// end search
 let emptyObject = {};
 console.log('testing search, should see all albums in collection', search(emptyObject)); //Couldn't figure out how to get this to return all albums
@@ -95,17 +95,3 @@ console.log('testing search, should see all albums in collection', search());
 console.log('testing search, should see empty array', search('glkjd', 2021));
 console.log('testing search, should see "Houses of the Holy"', search({artist: 'Led Zeppelin', year: 1973}));
 console.log('track search Uh Uh - expect to see Thundercat Drunk', search({trackName: "Uh Uh"}));
-// can I search just one parameter?
-// Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
-
-// Update the addToCollection function to also take an input parameter for the array of tracks.
-// Update search to allow a trackName search criteria.
-// Update the showCollection function to display the list of tracks for each album with its name and duration.
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
-//     3. NAME: DURATION
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
-// Make sure to test all your code! */
