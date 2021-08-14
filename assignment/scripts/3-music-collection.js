@@ -39,12 +39,12 @@ console.log(collection);
 function showCollection(someCollection){// Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
   console.log('in showCollection', someCollection);
   console.log('Total Albums:', someCollection.length);// Console.log the number of items in the array.
-  for (let i of someCollection){
-    console.log(i.title + ' by ' + i.artist + ', published in the year ' + i.year +':');
-    for (let j=0; j < i.trackName.length; j++){
+  for (let i of someCollection){ // looping through array
+    console.log(i.title + ' by ' + i.artist + ', published in the year ' + i.year +':'); //logging each property
+    for (let j=0; j < i.trackName.length; j++){ // withing each item, looping to log tracks arrays
       console.log((j+1) + '. ' + i.trackName[j] + ': ' + i.time[j]);
     }
-  }// Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
+  }
 } // end showCollection
 // Test the showCollection function.
 showCollection(collection);
@@ -62,10 +62,9 @@ function findByArtist(artist){// Take in artist (a string) parameter
 }// end findByArtist
 
 // Test the findByArtist function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
-console.log('testing findByArtist, searching Led Zeppelin', findByArtist('Led Zeppelin'));
-
-// When testing your functions, write all tests in the JavaScript file!
-
+console.log('testing findByArtist, searching Led Zeppelin - expect 2', findByArtist('Led Zeppelin'));
+console.log('testing findByArtist, searching Cory Wong - expect 2', findByArtist('Cory Wong'));
+console.log('testing findByArtist, searching Stevie Wonder - expect 0', findByArtist('Stevie Wonder'));
 // Stretch goals
 // Create a function called search. This function should:
 
@@ -73,22 +72,29 @@ function search(searchObject){// Take an input parameter for a search criteria o
 // { artist: 'Ray Charles', year: 1957 }
 // The returned output from search should meet these requirements:
   console.log('in search', typeof arguments);
-  if (arguments.length === 0 || searchObject === {}){
+  if (arguments.length === 0){
     return collection;
   } // If there is no search object or an empty search object provided as input, then return all albums in the collection.
   let searchResults = [];// If no results are found, return an empty array.
   for (let index of collection) {
-    if (index.artist === searchObject.artist && index.year === searchObject.year || index.trackName === searchObject.trackName){
+    for (let t = 0; t < index.trackName.length; t++){
+      if (searchObject.trackName === index.trackName[t]) {
+        searchResults.push(index);
+      }
+    }
+    if (index.artist === searchObject.artist && index.year === searchObject.year){
       searchResults.push(index);
     }
   }
+
   return searchResults;// Return a new array of all items in the collection matching all of the search criteria.
 }// end search
 let emptyObject = {};
-console.log('testing search, should see all albums in collection', search(emptyObject));
+console.log('testing search, should see all albums in collection', search(emptyObject)); //Couldn't figure out how to get this to return all albums
 console.log('testing search, should see all albums in collection', search());
 console.log('testing search, should see empty array', search('glkjd', 2021));
 console.log('testing search, should see "Houses of the Holy"', search({artist: 'Led Zeppelin', year: 1973}));
+console.log('track search Uh Uh - expect to see Thundercat Drunk', search({trackName: "Uh Uh"}));
 // can I search just one parameter?
 // Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
 
