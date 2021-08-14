@@ -66,16 +66,15 @@ console.log('testing findByArtist, searching Led Zeppelin - expect 2', findByArt
 console.log('testing findByArtist, searching Cory Wong - expect 2', findByArtist('Cory Wong'));
 console.log('testing findByArtist, searching Stevie Wonder - expect 0', findByArtist('Stevie Wonder'));
 // Stretch goals
-// Create a function called search. This function should:
 
-function search(searchObject){// Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
+function search(searchObject){// The phrasing from the assignment page confused me a bit here, so I kept it in the comments below for reference
+// Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
 // { artist: 'Ray Charles', year: 1957 }
-// The returned output from search should meet these requirements:
   console.log('in search', typeof arguments);
-  if (arguments.length === 0 || searchObject[0] === undefined){
+  if (arguments.length === 0){ // no search objet means empty arguments array, empty object has nothing at first index
     return collection;
-  } // If there is no search object or an empty search object provided as input, then return all albums in the collection.
-  let searchResults = [];// If no results are found, return an empty array.
+  } // Just give em their pick of everything
+  let searchResults = [];// If no results are found, empty array is returned.
   for (let index of collection) { // looping through collection array
     for (let t = 0; t < index.trackName.length; t++){ // *STRETCH* looping each objects trackName array
       if (searchObject.trackName === index.trackName[t]) { //assuming search input is in object format...
@@ -89,8 +88,8 @@ function search(searchObject){// Take an input parameter for a search criteria o
 
   return searchResults;// Returning new array of all items in the collection matching all of the search criteria.
 }// end search
-let emptyObject = {};
-console.log('testing search, should see all albums in collection', search(emptyObject)); //Couldn't figure out how to get this to return all albums
+let emptyThing = {};
+console.log('testing search, should see all albums in collection', search(emptyThing)); //Couldn't figure out how to get this to return all albums
 console.log('testing search, should see all albums in collection', search());
 console.log('testing search, should see empty array', search('glkjd', 2021));
 console.log('testing search, should see "Houses of the Holy"', search({artist: 'Led Zeppelin', year: 1973}));
