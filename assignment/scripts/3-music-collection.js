@@ -67,11 +67,22 @@ console.log('testing findByArtist, searching Cory Wong - expect 2', findByArtist
 console.log('testing findByArtist, searching Stevie Wonder - expect 0', findByArtist('Stevie Wonder'));
 // Stretch goals
 
+function isEmpty (someObject){ //function to check the properties of an object
+  console.log('in isEmpty', someObject);
+  let checkArr = []; //creating new array to store properties
+  for (let i in someObject){ // found out through trial and error that for in loop works here, when for of and longhand for-loop did not work... because properties are passed by reference? I'm not sure.
+    checkArr.push(i);
+    console.log('found this', i);
+  }
+  return (checkArr.length === 0) ? true : false; // if array length is still 0, object is empty
+} // end isEmpty
+ console.log('testing isEmpty - expect false', isEmpty({artist: "Steely Dan", year: 1975}));
+
 function search(searchObject){// The phrasing from the assignment page confused me a bit here, so I kept it in the comments below for reference
 // Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
 // { artist: 'Ray Charles', year: 1957 }
   console.log('in search', typeof arguments);
-  if (arguments.length === 0 || Object.keys(searchObject).length === 0){ // I found that "check for empty object" function on a webpage, see 3rd question "https://levelup.gitconnected.com/different-ways-to-check-if-an-object-is-empty-in-javascript-e1252d1c0b34#:~:text=return%20Object.keys(obj).length%20%3D%3D%3D%200%20%3B&text=This%20is%20typically%20the%20easiest,if%20an%20object%20is%20empty."
+  if (arguments.length === 0 || isEmpty(searchObject)){ // either no arguments provided, or the object provided is empty
     return collection;
   } // Just give em their pick of everything
   let searchResults = [];// If no results are found, empty array is returned.
@@ -89,6 +100,7 @@ function search(searchObject){// The phrasing from the assignment page confused 
   return searchResults;// Returning new array of all items in the collection matching all of the search criteria.
 }// end search
 let emptyThing = {};
+console.log('testing isEmpty - expect true', isEmpty(emptyThing));
 console.log('testing search, should see all albums in collection', search(emptyThing)); //Couldn't figure out how to get this to return all albums
 console.log('testing search, should see all albums in collection', search());
 console.log('testing search, should see empty array', search('glkjd', 2021));

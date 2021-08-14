@@ -12,7 +12,7 @@
     <ul>
       <li>I couldn't figure out how to get the search function to return all albums when given an empty object. Only when given no object. EDIT: I came up with something -- was it right?? It seemed to test right... EDIT 2: It did not work.</li>
       <li>Did I overthink it and miss a lot of simpler solutions? It seems like I kind of forced some things to work, but may have just been working around a better solution?</li>
-      <li>I used the Object.keys method to check for an empty array. I got it directly from a website, and read about it to understand that it creates a new array with the properties of an object listed as strings. By then using the .length operation, it makes it possible to check for zero length, which shows an empty object. I don't undestand why this isn't the same as checking for an arguments length of zero, and I basically just copy-pasted the code before learning about it, but I also couldn't find another way to successfully check for an empty object.</li>
+      <li>When iterating through an object, looking for properties, a for...of loop doesn't work quite right, and a basic for-loop format doesn't quite work, but a for...in loop does work. Why is this? I suspect it has something to do with properties and objects being passed by reference...<br />I also did lots of searching on how to check for an empty object, and found some other more concise ways, but I felt to include them would've been cheating, since I don't totally onderstand them (like using Object.keys.length, or iterating with hasOwnProperty).</li>
     </ul>
   </body>
 </html>
