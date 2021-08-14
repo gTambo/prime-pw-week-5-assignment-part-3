@@ -71,7 +71,7 @@ function search(searchObject){// The phrasing from the assignment page confused 
 // Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
 // { artist: 'Ray Charles', year: 1957 }
   console.log('in search', typeof arguments);
-  if (arguments.length === 0){ // no search objet means empty arguments array, empty object has nothing at first index
+  if (arguments.length === 0 || Object.keys(searchObject).length === 0){ // I found that "check for empty object" function on a webpage, see 3rd question "https://levelup.gitconnected.com/different-ways-to-check-if-an-object-is-empty-in-javascript-e1252d1c0b34#:~:text=return%20Object.keys(obj).length%20%3D%3D%3D%200%20%3B&text=This%20is%20typically%20the%20easiest,if%20an%20object%20is%20empty."
     return collection;
   } // Just give em their pick of everything
   let searchResults = [];// If no results are found, empty array is returned.
