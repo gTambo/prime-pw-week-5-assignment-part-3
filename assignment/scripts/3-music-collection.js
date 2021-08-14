@@ -25,13 +25,13 @@ console.log('added: ', addToCollection('Led Zeppelin I', 'Led Zeppelin', 1969, [
 
 // Adding 6 more albums to my collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
 // Console.log each album as added using the returned value.
-console.log('added: ', addToCollection('Houses Of the Holy', 'Led Zeppelin', 1973, ["The Song Remains the Same - 5:29", "The Rain Song - 7:39", "Over the Hills and Far Away - 4:51", "The Crunge - 3:18", "Dancing Days - 3:43", "D'yer Mak'er - 4:23", "No Quarter - 7:03", "The Ocean - 4:31"]));
-console.log('added: ', addToCollection('Feel.', 'Scary Goldings', 2020, ["The Shakes - 3:47", "Louis Cole Sucks (feat. Louis Cole) - 4:12", "Equal Parts Timing and Romance - 3:21", "", "", "", "", "Bondgirl - 3:06"]));
-console.log('added: ', addToCollection('Drunk', 'Thundercat', 2017, ["Rabbit Ho - 0:39", "Captain Stupido _ 1:42", "Uh Uh 2:16", "", "", "DUI - 2:18"]));
-console.log('added: ', addToCollection('Katy Lied', 'Steely Dan', 1975, ["Black Friday - 3:41", "Bad Sneakers - 3:20", "Rose Darling - 3:04", "Daddy don't live in that New York City no more - 3:14", "Doctor Wu - 3:55", "Everyone's Gone to the Movies - 3:44", "Your Gold Teeth II - 4:12", "Chain Lightning - 3:00", "Any World (That I'm Welcome To) - 3:54", "Throw Back the Little Ones -3:13"]));
-console.log('added: ', addToCollection('My First Car-EP', 'Vulfpeck', 2013, ["Wait for the Moment" + 3.51, "The Birdwatcher - 2:35", "The Speedwalker - 2:28", "My First Car - 4:31", "Kuhlmilch 74 BPM - 2:11", "It Gets Funkier III - 3:08"]));
+console.log('added: ', addToCollection('Houses Of the Holy', 'Led Zeppelin', 1973, ["The Song Remains the Same", "The Rain Song", "Over the Hills and Far Away", "The Crunge", "Dancing Days", "D'yer Mak'er",  "No Quarter", "The Ocean"], ["5:29", "7:39", "4:51", "3:18", "3:43", "4:23", "7:03", "4:31"]));
+console.log('added: ', addToCollection('Feel.', 'Scary Goldings', 2020, ["The Shakes", "Louis Cole Sucks (feat. Louis Cole)", "Equal Parts Timing and Romance", "Bondgirl"], ["3:47", "4:12", "3:21", "3:06"]));
+console.log('added: ', addToCollection('Drunk', 'Thundercat', 2017, ["Rabbit Ho", "Captain Stupido", "Uh Uh", "DUI"], ["0:39", "1:42", "2:16", "2:18"]));
+console.log('added: ', addToCollection('Katy Lied', 'Steely Dan', 1975, ["Black Friday", "Bad Sneakers", "Rose Darling", "Daddy don't live in that New York City no more", "Doctor Wu", "Everyone's Gone to the Movies", "Your Gold Teeth II", "Chain Lightning", "Any World (That I'm Welcome To)", "Throw Back the Little Ones"], ["3:41", "3:20", "3:04", "3:14", "3:55", "3:44", "4:12", "3:00", "3:54", "3:13"]));
+console.log('added: ', addToCollection('My First Car-EP', 'Vulfpeck', 2013, ["Wait for the Moment", "The Birdwatcher", "The Speedwalker", "My First Car", "Kuhlmilch 74 BPM", "It Gets Funkier III"], ["3.51", "2:35", "2:28", "4:31", "2:11", "3:08"]));
 console.log('added: ', addToCollection('The Striped Album', 'Cory Wong', 2020, ["Design (feat. Kimbra)", "Click Bait (feat. The Hornheads)"], ['3:37', '4:1']));
-console.log('added: ', addToCollection('Trail Songs: Dusk', 'Cory Wong', 2020, ["Tomorrow and Forever - 4:05", "Blackbird - 2:42", "First Time I Saw the Milky Way - 3:53", "One Man's Treasure - 2:12", "The Life Cycle of a Butterfly - 3:41", "Aurora - 2:47", "Trail End - 2:47"]));
+console.log('added: ', addToCollection('Trail Songs: Dusk', 'Cory Wong', 2020, ["Tomorrow and Forever", "Blackbird", "First Time I Saw the Milky Way", "One Man's Treasure", "The Life Cycle of a Butterfly", "Aurora", "Trail End"], ["4:05", "2:42", "3:53", "2:12", "3:41", "2:47", "2:47"]));
 // After all are added, console.log the collection array.
 console.log(collection);
 
@@ -40,7 +40,10 @@ function showCollection(someCollection){// Take in an array parameter. (This all
   console.log('in showCollection', someCollection);
   console.log('Total Albums:', someCollection.length);// Console.log the number of items in the array.
   for (let i of someCollection){
-    console.log(i.title + ' by ' + i.artist + ', published in the year ' + i.year);
+    console.log(i.title + ' by ' + i.artist + ', published in the year ' + i.year +':');
+    for (let j=0; j < i.trackName.length; j++){
+      console.log((j+1) + '. ' + i.trackName[j] + ': ' + i.time[j]);
+    }
   }// Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
 } // end showCollection
 // Test the showCollection function.
